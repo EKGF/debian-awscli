@@ -38,6 +38,9 @@ ARG DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash", "-c"]
 
 USER root
+
+ENV ekglib_version=7da5c4d
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends apt-utils 2> >( grep -v 'since apt-utils is not installed' >&2 ) && \
     apt-get install -y -qq \
@@ -64,23 +67,9 @@ RUN apt-get update && \
 #   install wheel just to avoid all kinds of messages during docker build
     python3 -m pip install wheel && \
     python3 -m pip install setuptools && \
-    python3 -m pip install rdflib && \
     python3 -m pip install git+https://github.com/rdflib/sparqlwrapper#egg=sparqlwrapper && \
-    python3 -m pip install git+https://github.com/ekgf/ekglib@3fe4283a27c62bb2f8478944c2c4a00fce5e5ad6#egg=ekglib && \
-#   most of the packages below are already pulled in by ekglib
-#   but keeping these lines here just for documentation purposes    
-    python3 -m pip install boto3 && \
-    python3 -m pip install botocore && \
-    python3 -m pip install owlrl && \
-    python3 -m pip install pandas && \
-    python3 -m pip install python-dateutil && \
+    python3 -m pip install git+https://github.com/ekgf/ekglib@${ekglib_version}#egg=ekglib && \
     python3 -m pip install requests && \
-    python3 -m pip install six && \
-    python3 -m pip install stringcase && \
-    python3 -m pip install humps && \
-    python3 -m pip install argparse && \
-    python3 -m pip install inflection && \
-    python3 -m pip install ldap3 && \
     python3 -m pip install xlrd && \
     python3 -m pip install pystardog && \
     python3 -m pip install unidecode && \

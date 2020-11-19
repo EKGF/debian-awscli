@@ -39,7 +39,8 @@ SHELL ["/bin/bash", "-c"]
 
 USER root
 
-ENV ekglib_version=f56f554d95ebce814131dbda69b44f84b6c8b692
+ENV ekglib_vendor=EKGF
+ENV ekglib_version=9e7c29d53603ad2d2ee03dcca1cc6b4dde189913
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends apt-utils 2> >( grep -v 'since apt-utils is not installed' >&2 ) && \
@@ -68,7 +69,7 @@ RUN apt-get update && \
     python3 -m pip install wheel && \
     python3 -m pip install setuptools && \
     python3 -m pip install git+https://github.com/rdflib/sparqlwrapper#egg=sparqlwrapper && \
-    python3 -m pip install git+https://github.com/ekgf/ekglib@${ekglib_version}#egg=ekglib && \
+    python3 -m pip install git+https://github.com/${ekglib_vendor}/ekglib@${ekglib_version}#egg=ekglib && \
     python3 -m pip install requests && \
     python3 -m pip install xlrd && \
     python3 -m pip install pystardog && \

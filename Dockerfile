@@ -39,8 +39,8 @@ SHELL ["/bin/bash", "-c"]
 
 USER root
 
-ENV ekglib_vendor=briskware
-ENV ekglib_version=a56494bbaa46a84e2e8ada6f4656c4a07467d08d
+ENV ekglib_vendor=EKGF
+ENV ekglib_version=9e7c29d53603ad2d2ee03dcca1cc6b4dde189913
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends apt-utils 2> >( grep -v 'since apt-utils is not installed' >&2 ) && \

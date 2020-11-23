@@ -39,6 +39,7 @@ SHELL ["/bin/bash", "-c"]
 
 USER root
 
+ENV ekglib_vendor=EKGF
 ENV ekglib_version=8962cc8267627c4efc181f39e7f3f9770ada8d4e
 
 RUN apt-get update && \
@@ -68,7 +69,7 @@ RUN apt-get update && \
     python3 -m pip install wheel && \
     python3 -m pip install setuptools && \
     python3 -m pip install git+https://github.com/rdflib/sparqlwrapper#egg=sparqlwrapper && \
-    python3 -m pip install git+https://github.com/ekgf/ekglib@${ekglib_version}#egg=ekglib && \
+    python3 -m pip install git+https://github.com/${ekglib_vendor}/ekglib@${ekglib_version}#egg=ekglib && \
     python3 -m pip install requests && \
     python3 -m pip install xlrd && \
     python3 -m pip install pystardog && \

@@ -2,3 +2,5 @@ image.id
 cloudbuild*
 *.flag
 *.code-workspace
+*.iml
+.idea/

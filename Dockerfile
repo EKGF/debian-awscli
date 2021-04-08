@@ -40,7 +40,7 @@ SHELL ["/bin/bash", "-c"]
 USER root
 
 ENV ekglib_vendor=EKGF
-ENV ekglib_version=114e37051205868506bd3c58fe55f26c4e96b07c
+ENV ekglib_version=00d19db8632137ebed8eda563e93902f551ae760
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends apt-utils 2> >( grep -v 'since apt-utils is not installed' >&2 ) && \
@@ -114,3 +114,4 @@ RUN apt-get update && \
 USER ekgprocess
 WORKDIR /home/ekgprocess
 ENTRYPOINT [ "/usr/local/bin/aws" ]
+

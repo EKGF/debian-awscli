@@ -2,7 +2,7 @@
 _IMAGE_NAME="docker.io/ekgf/debian-awscli"
 _IMAGE_VERSION="latest"
 # also bump the  version in .github/workflows/build.yml
-_MANUALLY_INCREMENTED_IMAGE_VERSION="0.0.24"
+_MANUALLY_INCREMENTED_IMAGE_VERSION="0.0.25-SNAPSHOT"
 
 docker build . \
   --iidfile=image.id \

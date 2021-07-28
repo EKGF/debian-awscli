@@ -40,7 +40,7 @@ SHELL ["/bin/bash", "-c"]
 USER root
 
 ENV ekglib_vendor=EKGF
-ENV ekglib_version=ecf78a7d989efa74e5504f1e01b0eecfa1b2501f
+ENV ekglib_version=ab293eb9ca21601fa6bc3a0c346d352d18b0a9b0
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends apt-utils 2> >( grep -v 'since apt-utils is not installed' >&2 ) && \

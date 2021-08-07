@@ -12,13 +12,14 @@ jobs:
       - uses: actions/checkout@v2
       # by definition the short_sha based tag never gets dirty (if built on github actions), see localbuild.sh
       - name: Set short_sha tag
-        id: vars
+        id: set_short_sha_tag_var
         run: echo "::set-output name=sha_short_tag::$(git rev-parse --short=7 HEAD)"
       # grab manually defined tag from localbuild.sh
       - name: Set manual tag
-        id: vars
+        id: set_manual_tag_var
         run: echo "::set-output name=manual_tag::$(grep ^_MANUALLY_INCREMENTED_IMAGE_VERSION localbuild.sh | cut -d= -f2 | xargs)"
       - name: Build and push Docker images
+        id: build_and_push_image
         uses: docker/build-push-action@v1.1.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}

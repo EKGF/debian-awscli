@@ -10,7 +10,7 @@ fi
 _IMAGE_VERSION="$(git rev-parse --short=7 HEAD)${_IS_DIRTY}"
 
 # postfix with "-SNAPSHOT" to indicate the version is under development and the image may be overwritten in dockerhub
-_MANUALLY_INCREMENTED_IMAGE_VERSION="0.0.25.STS-SNAPSHOT"
+_MANUALLY_INCREMENTED_IMAGE_VERSION="0.0.25"
 
 docker build . \
   --iidfile=image.id \

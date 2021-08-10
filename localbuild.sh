@@ -7,13 +7,14 @@ if ! git diff --quiet ; then
   _IS_DIRTY="-dirty"
 fi
 
-_IMAGE_VERSION="$(git rev-parse --short=7 HEAD)${_IS_DIRTY}"
+_IMAGE_VERSION="$(git rev-parse --short=7 HEAD)"
 
 # postfix with "-SNAPSHOT" to indicate the version is under development and the image may be overwritten in dockerhub
 _MANUALLY_INCREMENTED_IMAGE_VERSION="0.0.25"
 
 docker build . \
   --iidfile=image.id \
-  "--tag=${_IMAGE_NAME}:${_IMAGE_VERSION}" \
-  "--tag=${_IMAGE_NAME}:${_MANUALLY_INCREMENTED_IMAGE_VERSION}"
+  "--tag=${_IMAGE_NAME}:${_IMAGE_VERSION}${_IS_DIRTY}" \
+  "--tag=${_IMAGE_NAME}:${_MANUALLY_INCREMENTED_IMAGE_VERSION}${_IS_DIRTY}"
 exit $?
+
